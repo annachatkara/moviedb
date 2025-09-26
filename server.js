@@ -13,7 +13,7 @@ app.use(bodyParser.json({ limit: "50mb" })); // client-side limit
 // ENV Vars (set in Vercel)
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  process.env.moviedbSUPABASE_ANON_KEY
 );
 console.log("Supabase client initialized:", !!supabase);
 
@@ -310,4 +310,5 @@ app.get("/", (_req, res) => {
 });
 
 export default app;
+
 
