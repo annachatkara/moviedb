@@ -302,7 +302,7 @@ function generateRoutes(tableName) {
 }
 
 // Tables: movies, series, anime
-["movies", "series", "anime"].forEach(generateRoutes);
+["movies", "series", "anime", "trendingmovies"].forEach(generateRoutes);
 
 // Health
 app.get("/", (_req, res) => {
@@ -310,6 +310,7 @@ app.get("/", (_req, res) => {
 });
 
 export default app;
+
 
 
 
