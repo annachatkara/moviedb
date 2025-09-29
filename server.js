@@ -301,6 +301,25 @@ function generateRoutes(tableName) {
   });
 }
 
+app.post(`/api/request`, async (req, res) => {
+  try {
+    const { type, type_id, name } = req.body;
+    if (!type || !type_id || !name) {
+      return res.status(400).json({ error: "type, type_id and name are required" });
+    }
+
+    const { data, error } = await supabase
+      .from("requests") 
+      .insert([{ type, type_id, name }]);
+
+    if (error) return res.status(400).json({ error: error.message });
+
+    return res.status(201).json({ message: "Data inserted successfully", data });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Tables: movies, series, anime
 ["movies", "series", "anime", "trendingmovies"].forEach(generateRoutes);
 
@@ -310,6 +329,7 @@ app.get("/", (_req, res) => {
 });
 
 export default app;
+
 
 
 
