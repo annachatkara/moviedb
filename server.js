@@ -321,7 +321,7 @@ app.post(`/api/request`, async (req, res) => {
 });
 
 // Tables: movies, series, anime
-["movies", "series", "anime", "trendingmovies"].forEach(generateRoutes);
+["movies", "series", "anime", "trendingmovies","hlstoken"].forEach(generateRoutes);
 
 // Health
 app.get("/", (_req, res) => {
@@ -329,6 +329,7 @@ app.get("/", (_req, res) => {
 });
 
 export default app;
+
 
 
 
